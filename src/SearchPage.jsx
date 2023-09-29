@@ -11,30 +11,36 @@ const SearchPage = () => {
     navigate(`/result?q=${encodeURIComponent(serialNumber)}`);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="container">
       <div className="logo">
-        {/* <img src="your_logo_url_here" alt="Logo" /> */}
         <Heading style={{paddingBottom: '0.3rem'}}>AgroChain</Heading>
-        <Text fontSize='sm'>Track the product quality grade</Text>
+        <Text fontSize='sm'>Track the product quality grade in the blockchain!</Text>
       </div>
       <div className="search-bar">
         <Flex>
           <Input
-          className="serialInput"
+            className="serialInput"
             type="text"
             placeholder="Enter Serial Number"
             value={serialNumber}
             onChange={(e) => setSerialNumber(e.target.value)}
+            onKeyDown={handleKeyDown} // Added this line
           />
-            <IconButton
+          <IconButton
             style={{marginLeft: '0.8rem'}}
-              colorScheme='blue'
-              aria-label='Search database'
-              icon={<SearchIcon />}
-              onClick={handleSearch}
-            />  
-          </Flex>
+            colorScheme='blue'
+            aria-label='Search database'
+            icon={<SearchIcon />}
+            onClick={handleSearch}
+          />  
+        </Flex>
       </div>
     </div>
   );

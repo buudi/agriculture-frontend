@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Flex, Center, Text, Button, Progress } from "@chakra-ui/react";
+import { Box, Flex, Center, Text, Button, Progress, Badge, Skeleton } from "@chakra-ui/react";
 import { data } from "./data"; // Assuming the data array is in the same directory
 
 const ResultPage = () => {
@@ -36,26 +36,33 @@ const ResultPage = () => {
     <Flex flexDirection="column" alignItems="center" mt="8">
       {product ? (
         <>
+          <Badge variant="solid" colorScheme="blue" p={2} fontSize="lg" mb="2">
+            Overall Rating: {calculateOverallRating()}
+          </Badge>
+          <Skeleton isLoaded={!!product.image_url}>
+            <img src={product.image_url} alt={product.product_name} style={{ width: "300px", marginBottom: "20px" }} />
+          </Skeleton>
           <Text fontSize="2xl" mb="4">
             Product: {product.product_name}
           </Text>
-          <Text fontSize="xl" mb="4">
+          <Text fontSize="xl" mb="2">
             Serial Number: {serialNumber}
           </Text>
-          <Text fontSize="xl" mb="2">
-            Overall Rating: {calculateOverallRating()}
-          </Text>
+          
           <Box w="100%" maxW="500px">
             {["Seed Storage", "Crop Growth", "Transportation Emission", "Processing and Packaging"].map((label) => (
               <Box key={label} mb="4">
                 <Text fontSize="lg" fontWeight="bold" mb="2">{label}</Text>
                 <Flex alignItems="center">
-                  <Progress value={product[`${label.toLowerCase().replace(/ /g, "_")}_grade`] * 10} colorScheme="green" size="lg" flex="1" />
+                  <Progress value={product[`${label.toLowerCase().replace(/ /g, "_")}_grade`] * 10} colorScheme="blue" size="lg" flex="1" />
                   <Text fontSize="lg" fontWeight="bold">{product[`${label.toLowerCase().replace(/ /g, "_")}_grade`]}</Text>
                 </Flex>
               </Box>
             ))}
           </Box>
+          <Button colorScheme="blue" mt="4" onClick={() => (window.location.href = "/")}>
+            Search for Another Product
+          </Button>
         </>
       ) : (
         <>
