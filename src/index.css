@@ -16,7 +16,7 @@ html {
   max-width: 200px; /* Set a maximum width for the logo */
 }
 
-.search-bar input {
+.search-bar .serialInput {
   padding: 10px;
   font-size: 16px;
 }
