@@ -15,18 +15,7 @@ html {
 .logo img {
   max-width: 200px; /* Set a maximum width for the logo */
 }
-
-.search-bar .serialInput {
-  padding: 10px;
-  font-size: 16px;
-}
-
-.search-bar button {
-  padding: 10px 20px;
-  font-size: 16px;
-}
-
-/* Optional: Add some space between the logo and search bar */
+  
 .logo {
   margin-bottom: 20px;
 }

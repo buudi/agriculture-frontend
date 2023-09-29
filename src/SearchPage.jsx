@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Heading, Input, IconButton, Flex, Spacer } from '@chakra-ui/react'
+import { Text, Heading, Input, IconButton, Flex } from '@chakra-ui/react'
 import { SearchIcon   } from '@chakra-ui/icons'
 
 const SearchPage = () => {
@@ -15,7 +15,8 @@ const SearchPage = () => {
     <div className="container">
       <div className="logo">
         {/* <img src="your_logo_url_here" alt="Logo" /> */}
-        <Heading>Informed Agriculture Products</Heading>
+        <Heading style={{paddingBottom: '0.3rem'}}>AgroChain</Heading>
+        <Text fontSize='sm'>Track the product quality grade</Text>
       </div>
       <div className="search-bar">
         <Flex>
